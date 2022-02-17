@@ -16,6 +16,7 @@ import { Observable } from 'rxjs';
 export class EtudiantServiceService {
 
   private etudiantsUrl: string;
+
   constructor(private http: HttpClient) {
     this.etudiantsUrl = 'http://localhost:8080/etudiants';
   }
@@ -27,10 +28,15 @@ export class EtudiantServiceService {
   public save(etudiant: Etudiant) {
     return this.http.post<Etudiant>(this.etudiantsUrl, etudiant);
   }
-  public delet(etudiant: Etudiant) {
-    return this.http.post<Etudiant>(this.etudiantsUrl, etudiant);
+  // public delet(id:number) {
+  //   return this.http.delete<Etudiant>(this.etudiantsUrl+id);
+  // }
+
+  delete(id:String) {
+    return this.http.delete(`${this.etudiantsUrl}/${id}`);
   }
-  public updat(etudiant: Etudiant) {
-    return this.http.post<Etudiant>(this.etudiantsUrl, etudiant);
+  public updat(id:number,etudiant: Etudiant) {
+    return this.http.put<Etudiant>(`${this.etudiantsUrl}/${id}`, etudiant);
   }
+
 }

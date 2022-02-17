@@ -14,7 +14,7 @@
           <td>{{ etudiant.id }}</td>
           <td>{{ etudiant.nom }}</td>
           <td>{{ etudiant.prenom }}</td>
-          <td> <button type="button" class="btn btn-danger">Delet</button>
+          <td> <button type="button" class="btn btn-danger" (click)="delete(etudiant.id)">Delet</button>
          </td>
           <td><button type="button" class="btn btn-info">update</button></td>
         </tr>

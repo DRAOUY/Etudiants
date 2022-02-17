@@ -1,18 +1,4 @@
-// import { Component, OnInit } from '@angular/core';
 
-// @Component({
-//   selector: 'app-etudiant-list',
-//   templateUrl: './etudiant-list.component.html',
-//   styleUrls: ['./etudiant-list.component.css']
-// })
-// export class EtudiantListComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit(): void {
-//   }
-
-// }
 
 import { Component, OnInit } from '@angular/core';
 import { Etudiant } from '../etudiant';
@@ -26,7 +12,7 @@ import { EtudiantServiceService } from '../etudiant-service.service';
 export class EtudiantListComponent implements OnInit {
 
   etudiants: Etudiant[];
-
+  id : number;
   constructor(private etudiantServiceService: EtudiantServiceService) {
   }
 
@@ -35,4 +21,15 @@ export class EtudiantListComponent implements OnInit {
       this.etudiants = data;
     });
   }
+
+  delete(id: String) {
+    this.etudiantServiceService.delete(id).subscribe(
+      data => {
+        console.log('deleted response', data);
+        alert('deleted');
+        this.ngOnInit();
+      }
+    )
+  }
+  
 }
